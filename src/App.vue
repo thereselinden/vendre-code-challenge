@@ -1,13 +1,9 @@
-<script setup>
-import Home from './view/Home.vue';
-</script>
+<script setup></script>
 
 <template>
-  <header>
-    <h2>Hello from App</h2>
-  </header>
+  <header></header>
   <main>
-    <Home />
+    <router-view />
   </main>
 </template>
 
