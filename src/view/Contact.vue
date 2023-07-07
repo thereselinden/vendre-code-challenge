@@ -1,5 +1,5 @@
 <script setup></script>
 
-<template></template>
+<template>Hello from contact</template>
 
 <style></style>

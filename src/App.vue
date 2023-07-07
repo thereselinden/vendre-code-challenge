@@ -1,13 +1,16 @@
-<script setup>
-import Home from './view/Home.vue';
-</script>
+<script setup></script>
 
 <template>
   <header>
-    <h2>Hello from App</h2>
+    <nav>
+      <ul>
+        <router-link :to="{ name: 'Home' }">Home</router-link>
+        <router-link :to="{ name: 'Contact' }">Contact</router-link>
+      </ul>
+    </nav>
   </header>
   <main>
-    <Home />
+    <router-view />
   </main>
 </template>
 
