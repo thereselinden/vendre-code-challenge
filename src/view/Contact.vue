@@ -17,7 +17,6 @@
       Send message
     </button>
   </form>
-  email: {{ emailTo }}
 </template>
 
 <script>
