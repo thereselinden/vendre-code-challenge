@@ -1,29 +1,21 @@
 # vendre-code-challenge
 
-This template should help get you started developing with Vue 3 in Vite.
+Code test send by Vendre.
 
-## Recommended IDE Setup
+## Requirements
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- Use Vue as library
+- Get employees dummy data from provided API
+- Show rounded images
+- When click on each employee link to employees email.
 
 ## Project Setup
 
 ```sh
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+## View live
 
-```sh
-npm run build
-```
+vendre-therese-linden.netlify.app

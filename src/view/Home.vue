@@ -1,7 +1,9 @@
-<script setup></script>
+<script setup>
+import List from '../components/List.vue';
+</script>
 
 <template>
-  <h3>Hello from Home</h3>
+  <List />
 </template>
 
 <style></style>
