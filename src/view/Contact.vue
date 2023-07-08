@@ -1,22 +1,25 @@
 <template>
-  <button @click="handleClick">Back home</button>
-  <form @submit.prevent="handleSubmit">
-    <label for="emailTo">Send to:</label>
-    <input type="email" id="emailTo" required v-model="emailTo" />
-    <label for="message">Message:</label>
-    <textarea
-      name="message"
-      id="message"
-      cols="30"
-      rows="10"
-      minlength="6"
-      required
-      v-model="message"
-    ></textarea>
-    <button :disabled="!emailTo || !message" class="submit">
-      Send message
-    </button>
-  </form>
+  <section class="contact-container">
+    <h1>Contact</h1>
+
+    <button @click="handleClick" class="go-back">&#8592;</button>
+    <h4>
+      Sending mail to: <span class="recipient">{{ id }}</span>
+    </h4>
+    <form @submit.prevent="handleSubmit">
+      <label for="message">Message:</label>
+      <textarea
+        name="message"
+        id="message"
+        cols="30"
+        rows="10"
+        minlength="6"
+        required
+        v-model="message"
+      ></textarea>
+      <button :disabled="!message" class="submit">Send message</button>
+    </form>
+  </section>
 </template>
 
 <script>
@@ -24,15 +27,15 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
-      emailTo: '',
       message: '',
     };
   },
 
   methods: {
     handleSubmit() {
-      console.log('form submitted', this.emailTo, this.message);
-      (this.emailTo = ''), (this.message = '');
+      console.log('form submitted', this.id, this.message);
+      this.message = '';
+      history.back();
     },
     handleClick() {
       history.back();
@@ -42,12 +45,34 @@ export default {
 </script>
 
 <style>
+.contact-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.go-back {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #f49586;
+  padding: 0;
+  margin-bottom: 2rem;
+  cursor: pointer;
+}
+
+.go-back:hover {
+  scale: 1.3;
+}
+
+.recipient {
+  font-weight: bold;
+  color: #f49586;
+}
+
 form {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
 }
 
 label {
