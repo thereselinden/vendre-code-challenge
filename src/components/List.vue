@@ -9,6 +9,10 @@
       <Card :employee="employee" />
     </article>
   </section>
+  <div class="pagination">
+    <a @click="pagination(1)">1</a>
+    <a @click="pagination(2)">2</a>
+  </div>
 </template>
 
 <script>
@@ -24,19 +28,27 @@ export default {
       page: 1,
     };
   },
-  async mounted(page) {
-    // FUNKAR INTE, PAGE = UNDEFINED
-    console.log('page', page);
-    const query = JSON.stringify(page);
-    const url = `https://reqres.in/api/users?page=${query}`;
-    console.log('url', url);
-    try {
-      const response = await fetch(`https://reqres.in/api/users`);
-      const { data: employees } = await response.json();
-      this.employees = employees;
-    } catch (err) {
-      console.log(err);
-    }
+  methods: {
+    async fetchEmployees() {
+      const query = JSON.stringify(this.page);
+      const url = `https://reqres.in/api/users?page=${query}`;
+      try {
+        const response = await fetch(url);
+        const { data: employees } = await response.json();
+        this.employees = employees;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+    pagination(num) {
+      this.page = num;
+      this.fetchEmployees();
+    },
+  },
+
+  async mounted() {
+    await this.fetchEmployees();
   },
 };
 </script>
@@ -56,6 +68,14 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 1rem;
+  cursor: pointer;
 }
 
 @media (min-width: 668px) {
